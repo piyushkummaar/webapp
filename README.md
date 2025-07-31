@@ -1,8 +1,3 @@
-Sure! Here's a simple and clean `README.md` file for your Django app:
-
----
-
-````markdown
 # Django Web Application
 
 This is a Django-based web application that includes basic user functionality such as registration, login/logout, profile management, and preference saving. It also includes static content pages like **About** and **Contact**.
@@ -35,7 +30,7 @@ This is a Django-based web application that includes basic user functionality su
    ```bash
    git clone https://github.com/piyushkummaar/webapp
    cd yourproject
-````
+   ````
 
 2. **Create virtual environment**
 
