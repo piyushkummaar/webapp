@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	{% include 'includes/head.html' %}
+</head>
+<body>
+<!-- navigation -->
+{% include 'includes/navbar.html' %}
+<section class="contact-form-wrap section">
+    <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</section>
+
+{% include 'includes/footer.html' %}
+
+{% include 'includes/scripts.html' %}
+
+</body>
+</html>
+

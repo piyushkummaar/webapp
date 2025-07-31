@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow border-0 rounded-4">
+        <div class="card-body p-4">
+
+          <div class="text-center mb-4">
+            <img width="96" height="96" src="https://img.icons8.com/nolan/96/about-us-male.png" alt="profile-info"/>
+            <h3 class="card-title fw-bold">My Profile</h3>
+            <p class="text-muted small">Manage your account information</p>
+          </div>
+
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <strong>Email:</strong>
+              <span class="float-end">{{ user.email }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>First Name:</strong>
+              <span class="float-end">{{ user.first_name|default:"Not provided" }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Last Name:</strong>
+              <span class="float-end">{{ user.last_name|default:"Not provided" }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Age:</strong>
+              <span class="float-end">{{ user.age|default:"Not provided" }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Date Joined:</strong>
+              <span class="float-end">{{ user.date_joined|date:"d M Y, h:i A" }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Support Preference:</strong>
+              <span class="float-end text-capitalize">
+                {% if request.user.support_preference %}
+                  {{ request.user.support_preference.preference }}
+                {% else %}
+                  <span class="text-muted">Not selected</span>
+                {% endif %}
+              </span>
+
+              <div class="mt-2 text-center">
+                <small class="text-muted">
+                  {% if request.user.support_preference %}
+                    Want to change it? Visit the <a href="{% url 'dashboard' %}">Preference Page</a>.
+                  {% else %}
+                    Please select one from your <a href="{% url 'dashboard' %}">Preference Page</a>.
+                  {% endif %}
+                </small>
+              </div>
+            </li>
+          </ul>
+
+          <div class="text-center mt-4">
+            <a href="{% url 'accounts:logout' %}" class="btn btn-outline-danger w-50">Logout</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

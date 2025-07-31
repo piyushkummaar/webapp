@@ -1,0 +1,47 @@
+<div id="navbar" class="navigation py-4">
+	<div class="container">
+		 <nav class="navbar">
+			 <div class="navbar-brand">
+				 <a class="navbar-item" href="{% url 'home' %}" style="color:#537D5D">
+					 Meilichios ⋅ Epithet
+				 </a>
+				 <button role="button" class="navbar-burger burger" data-hidden="true" data-target="navigation">
+					 <span aria-hidden="true"></span>
+					 <span aria-hidden="true"></span>
+					 <span aria-hidden="true"></span>
+				 </button>
+			 </div>
+
+			 <div class="navbar-menu" id="navigation">
+				 <ul class="navbar-start ml-auto">
+					 <li class="navbar-item">
+						 <a class="navbar-link" href="{% url 'home' %}">Home</a>
+					 </li>
+
+					 <li class="navbar-item">
+						 <a class="navbar-link" href="{% url 'home' %}#about">About</a>
+					 </li>
+					 <li class="navbar-item">
+						 <a class="navbar-link" href="{% url 'home' %}#contact">Contact</a>
+					 </li>
+				 </ul>
+				 <ul class="navbar-end ml-0">
+					 {% if user.is_authenticated %}
+					 <li class="navbar-item has-dropdown">
+						 <a class="navbar-link">My Account</a>
+						 <div class="navbar-dropdown">
+							 <a class="navbar-item" href="{% url 'accounts:profile' %}">Profile</a>
+							 <a class="navbar-item" href="{% url 'accounts:change_password' %}">Change Password</a>
+							 <a class="navbar-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+						 </div>
+					 </li>
+					 {% else %}
+					 <li class="navbar-item">
+						<a href="{% url 'accounts:login' %}" class="btn btn-solid-border">Login<i class="fa fa-angle-right ml-2"></i></a>
+					 </li>
+					 {% endif %}
+				 </ul>
+			 </div>
+		 </nav>
+	</div>
+ </div>

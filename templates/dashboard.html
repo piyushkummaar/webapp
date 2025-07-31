@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <!-- Question Card -->
+      <div class="card shadow border-0">
+        <div class="card-body text-center">
+          <h4 class="fw-bold mb-4">How can we support you?</h4>
+
+          <!-- Dropdown Form -->
+          <form method="post" action="{% url 'support_redirect' %}">
+            {% csrf_token %}
+            <div class="form-group mb-4">
+              <select name="support_option" class="form-select" required>
+                <option value="" disabled selected>Choose an option</option>
+                <option value="medication">Medication</option>
+                <option value="doctor">Online Doctor Appointment</option>
+                <option value="chat">Pharmacists Online Chat</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Continue</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

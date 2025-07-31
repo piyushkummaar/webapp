@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+
+# Media and static files (optional, if using external storage or generated at runtime)
+media/
+staticfiles/
+static/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# Migrations (optional - include if you don't want to track migration history)
+**/migrations/*.py
+**/migrations/__pycache__/
+
+# Pytest
+htmlcov/
+.coverage
+.tox/
+.pytest_cache/
+
+# Others
+*.bak
+*.swp

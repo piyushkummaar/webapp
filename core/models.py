@@ -1,0 +1,69 @@
+from django.db import models
+from django.conf import settings
+from django.utils.text import slugify
+
+
+class SupportPreference(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='support_preference')
+    preference = models.CharField(max_length=50)
+
+    created_at = models.DateTimeField(auto_now_add=True)  # When first created
+    updated_at = models.DateTimeField(auto_now=True)  # When last modified
+
+    def __str__(self):
+        return f"{self.user.email} - {self.preference}"
+
+    class Meta:
+        verbose_name = "Support Preference"
+        verbose_name_plural = "Support Preferences"
+        ordering = ['-updated_at']
+        db_table = 'tbl_support_preferences'
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True, blank=True)
+    description = models.TextField()
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Event"
+        verbose_name_plural = "Events"
+        ordering = ['-created_at']
+        db_table = 'tbl_events'
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.name
+
+
+class ContactMessage(models.Model):
+    SUPPORT_CHOICES = [
+        ('design', 'Software Design'),
+        ('cycle', 'Development cycle'),
+        ('development', 'Software Development'),
+        ('maintenance', 'Maintenance'),
+        ('query', 'Process Query'),
+        ('cost', 'Cost and Duration'),
+        ('delivery', 'Modal Delivery'),
+    ]
+
+    support_option = models.CharField(max_length=50, choices=SUPPORT_CHOICES)
+    subject = models.CharField(max_length=255)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        db_table = 'tbl_contact_messages'
+        ordering = ['-submitted_at']
+
+    def __str__(self):
+        return f"{self.subject} by {self.name}"

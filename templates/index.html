@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	{% include 'includes/head.html' %}
+</head>
+<body>
+<!-- navigation -->
+	{% include 'includes/navbar.html' %}
+<!-- Slider Start -->
+<section class="banner is-flex is-align-items-center">
+	<div class="banner-img-part"></div>
+	<div class="container">
+		<div class="columns">
+			<div class="column is-8-widescreen is-10-desktop">
+				<div class="block">
+					<span class="is-uppercase text-sm letter-spacing ">The most powerful Solution</span>
+					<h1 class="my-4">Empower Your Healthcare Leadership</h1>
+					<p class="mb-6">Veritatis earum aliquid doloribus molestias, eveniet molestiae aperiam ratione. Facilis velit voluptatibus impedit eligendi delectus illo earum voluptatum, laudantium molestiae!</p>
+
+					<a href="{% url 'accounts:register' %}" class="btn btn-main">Join us<i class="fa fa-angle-right ml-2"></i></a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="section about">
+	<div class="container">
+		<div class="columns is-multiline">
+			{% for event in events %}
+			<div class="column is-4-widescreen is-6-tablet">
+				<div class="about-item">
+					<div class="icon">
+						<i class="ti-calendar" style="font-size: 2rem;"></i>
+					</div>
+					<div class="content">
+						<h4 class="mt-3 mb-3">{{ event.name }}</h4>
+						<p class="mb-5" style="text-align: justify;">{{ event.description }}</p>
+						<a href="{% url 'accounts:register' %}"> Join Now </a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<section class="section process" id="about">
+	<div class="container">
+		<div class="columns is-multiline is-desktop is-align-items-center">
+			<div class="column is-5-desktop">
+			<div class="process-block pl-4">
+				<span class="is-uppercase text-sm letter-spacing">About Us</span>
+				<h2 class="mb-4 mt-3">We Help You Feel Better, Inside and Out</h2>
+				<p class="mb-4" style="text-align: justify;">
+					We are dedicated to enhancing your well-being by offering a wide range of clinical and cosmetic healthcare solutions — from medical-grade Botox and skin supplements to weight loss programs and personalized therapy.
+				</p>
+				<p class="mb-4" style="text-align: justify;">
+					Our trusted network of doctors and pharmacists ensure top-quality care, while our subscription-based services bring convenience and continuity directly to your doorstep. Whether you're looking for confidence-boosting treatments or long-term health support, we're here to help you feel your best.
+				</p>
+			</div>
+		</div>
+
+			<div class="column is-7-desktop">
+				<div class="columns is-multiline custom-grid">
+			<!-- Card 1 -->
+			<div class="column is-6-widescreen is-6-tablet pt-0">
+				<div class="icon-block has-text-centered mt-30">
+					<i class="ti-rocket"></i>
+					<h5>Medical Services & Therapy</h5>
+					<p style="text-align: justify;">
+						We provide medical services and therapy customized to each customer’s needs, including solutions for yearly vaccinations.
+					</p>
+					<p style="text-align: justify;">
+						Receive personalized medical reviews from our network of doctors and pharmacists. We offer medical supplies, over-the-counter products, supplements, and more.
+					</p>
+				</div>
+			</div>
+
+			<!-- Card 2 -->
+			<div class="column is-6-widescreen is-6-tablet pt-0">
+				<div class="icon-block has-text-centered">
+					<i class="ti-search"></i>
+					<h5>Weight Loss Program</h5>
+					<p style="text-align: justify;">
+						Weight loss kits, supplements, and injections available with clinical support throughout your weight loss journey.
+					</p>
+					<p style="text-align: justify;">
+						Enroll in our program and notice daily improvements. Monthly subscription plans available, starting from just £20/month after a one-month trial.
+					</p>
+					<p style="text-align: justify;">
+						Clinically proven to help you lose weight. Get a month’s supply delivered directly to your door.
+					</p>
+				</div>
+			</div>
+
+			<!-- Card 3 -->
+			<div class="column is-6-widescreen is-6-tablet pb-0">
+				<div class="icon-block has-text-centered mt-30">
+					<i class="ti-panel"></i>
+					<h5>Botox & Skin Health</h5>
+					<p style="text-align: justify;">
+						Botox injections available to improve appearance by relaxing muscles that cause wrinkles. High-grade medical standards are followed by all practitioners.
+					</p>
+					<p style="text-align: justify;">
+						Clinically proven to help your skin bounce back. Get a month’s supply of supplements for skin delivered to your door.
+					</p>
+				</div>
+			</div>
+
+
+				<!-- Card 4 -->
+				<div class="column is-6-widescreen is-6-tablet">
+				<div class="icon-block has-text-centered">
+					<i class="ti-light-bulb"></i>
+					<h5>Practice Manager - Individual - £15.00/month</h5>
+					<p style="text-align: justify;">
+						<em>Subscription period: 1 month, automatically recurring payments</em>
+					</p>
+					<p style="text-align: justify;">
+						<strong>🩺 Individual Membership – $180/year</strong><br>
+						Join a trusted community of practice leaders committed to collaboration, growth, and healthcare excellence.
+					</p>
+					<p style="text-align: justify;">
+						<strong>Benefits include:</strong>
+						<ul style="text-align: left; padding-left: 20px;">
+							<li>✅ Access to all monthly Medical Managers online meetings – attend monthly engaging motivational sessions from doctors and pharmacists.</li>
+							<li>✅ Early registration for supplements as per doctor review – be first in line for monthly reviews by doctors/pharmacists before online slots fill up.</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+			</div>
+
+			</div>	
+		</div>
+	</div>
+</section>
+<section class="section cta">
+    <div class="container">
+        <div class="columns is-desktop is-vcentered">
+            <div class="column is-5-widescreen is-7-desktop">
+                <div class="cta-content bg-white rounded p-5">
+                    <h3 class="mb-5">
+                        Our Panel of <span class="text-color-primary">Doctor Motivational </span>Talk
+                    </h3>
+                    <p class="mb-4">
+                        Our services are vast and collaborated with a panel of various medical practitioners to support customers’ day-to-day needs.
+                    </p>
+                    <a href="{% url 'accounts:register' %}" class="btn btn-main">Register Now <i class="fa fa-angle-right ml-2"></i></a>
+                </div>
+            </div>
+
+            <div class="column is-7-widescreen is-5-desktop">
+                <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 10px;">
+                    <iframe
+                        src="https://www.youtube.com/embed/G-sD3sB4H04"
+                        frameborder="0"
+                        allowfullscreen
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- section counter start -->
+<section class="section counter pb-0">
+  <div class="container">
+    <div class="columns is-vcentered is-multiline">
+
+      <!-- Left Column: Heading + Login -->
+      <div class="column is-7-desktop is-12-tablet">
+        <div class="heading mb-5">
+          <h2 class="has-text-white title is-3 mb-3">Let’s Elevate Your Health Journey</h2>
+          <p class="subtitle is-5 has-text-white">
+            We have the best experts to support your healthcare and wellness goals. Join us today and see the transformation.
+          </p>
+        </div>
+
+        <!-- Inline Login Form -->
+        <form method="post" action="{% url 'accounts:login' %}" class="field is-grouped is-grouped-multiline is-flex-wrap-wrap" novalidate>
+          {% csrf_token %}
+          <p class="control is-expanded">
+            <input type="email" name="email" class="input" placeholder="Email" required>
+          </p>
+          <p class="control is-expanded">
+            <input type="password" name="password" class="input" placeholder="Password" required>
+          </p>
+          <p class="control">
+            <button type="submit" class="button is-primary">Login</button>
+          </p>
+        </form>
+      </div>
+
+      <!-- Right Column: CTA -->
+      <div class="column is-5-desktop is-12-tablet is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
+        <div class="has-text-centered">
+          <h2 class="has-text-white title is-4 mb-3">Why Choose Us?</h2>
+          <p class="mb-4 has-text-white">
+            Trusted by thousands for personalized healthcare, expert consultation, and curated wellness plans across the globe.
+          </p>
+          <a href="#health-assessment" class="button is-primary is-medium">
+            Health Assessment Evaluation
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- section Counter End  -->
+<!-- section Contact start  -->
+<section class="contact-form-wrap section" id="contact">
+    <div class="container">
+        <div class="columns is-multiline">
+            <div class="column is-12">
+                <span class="text-color">Send a message</span>
+                <h3 class="text-md mb-5">Contact Form</h3>
+            </div>
+        </div>
+	{% if success %}
+	<div class="notification is-success is-light">
+	  <strong class="has-text-success-dark">Thank you for reaching out!</strong>
+	  <br>
+	  We’ve received your message and our team will get back to you shortly.
+	  You can expect a reply within 24–48 business hours.
+	  <br><br>
+	  <em>We appreciate your interest and look forward to assisting you.</em>
+	</div>
+	{% endif %}
+        <div class="columns is-multiline">
+            <div class="column is-8-desktop">
+                <form id="contact-form" class="contact__form" method="post" action="">
+					{% csrf_token %}
+					<div class="columns is-multiline">
+						<div class="column is-12">
+							<div class="notification is-success contact__msg mb-4" style="display:none" role="alert">
+								Your message was sent successfully.
+							</div>
+
+							<select class="input" name="support_option" id="exampleFormControlSelect1" required>
+								<option value="">I Need help in ...</option>
+								<option value="design">Software Design</option>
+								<option value="cycle">Development cycle</option>
+								<option value="development">Software Development</option>
+								<option value="maintenance">Maintenance</option>
+								<option value="query">Process Query</option>
+								<option value="cost">Cost and Duration</option>
+								<option value="delivery">Modal Delivery</option>
+							</select>
+						</div>
+						<div class="column is-12">
+							<input name="subject" id="subject" type="text" class="input" placeholder="Your Subject" required>
+						</div>
+						<div class="column is-12">
+							<input name="name" id="name" type="text" class="input" placeholder="Your Name" required>
+						</div>
+						<div class="column is-12">
+							<input name="email" id="email" type="email" class="input" placeholder="Email Address" required>
+						</div>
+						<div class="column is-12">
+							<textarea name="message" id="message" class="input" placeholder="Your Message" required></textarea>
+						</div>
+						<div class="column is-12">
+							<button class="btn btn-main" name="submit" type="submit">Send Message</button>
+						</div>
+					</div>
+				</form>
+            </div>
+            <div class="column is-4-desktop">
+                <div class="short-info">
+                     <ul class="list-unstyled">
+                         <li>
+                            <h5>Call Us</h5>
+                            +1 9987 506 744
+                        </li>
+                        <li>
+                            <h5>Email Us</h5>
+                            contact@mail.com
+                        </li>
+                        <li>
+                            <h5>Location Map</h5>
+                            North Main Street,London
+                        </li>
+                    </ul>
+
+                    <ul class="social-icons list-inline mt-5">
+                        <li class="list-inline-item">
+                            <a href="http://www.themefisher.com"><i class="fab fa-facebook-f"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.themefisher.com"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="http://www.themefisher.com"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section Contact End  -->
+<!--<section class="section testimonial">-->
+<!--	<div class="container">-->
+<!--		<div class="columns is-desktop">-->
+<!--			<div class="column is-8-desktop">-->
+<!--				<div class="heading">-->
+<!--					<h2 class="mb-5">What they say about us</h2>-->
+<!--					<p>They are truely amazing in the industry ,molestiae expedita aspernatur officia, similique minima laudantium. Corrupti ipsa perspiciatis commodi nesciunt rerum mollitia enim voluptate!</p>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+<!--	<div class="container-fluid">-->
+<!--		<div class="columns is-multiline">-->
+<!--			<div class="column is-12 testimonial-wrap">-->
+<!--				<div class="testimonial-block">-->
+<!--					<p>-->
+<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
+<!--					</p>-->
+
+<!--					<div class="client-info is-flex is-align-items-center">-->
+<!--						<div class="client-img">-->
+<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							<h6>John Partho</h6>-->
+<!--							<span>Newyork USA</span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--				<div class="testimonial-block">-->
+<!--					<p>-->
+<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
+<!--					</p>-->
+
+<!--					<div class="client-info is-flex is-align-items-center">-->
+<!--						<div class="client-img">-->
+<!--							<img src="images/team/testimonial2.jpg" alt="" class="w-100">-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							<h6>John Partho</h6>-->
+<!--							<span>Newyork USA</span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="testimonial-block">-->
+<!--					<p>-->
+<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
+<!--					</p>-->
+
+<!--					<div class="client-info is-flex is-align-items-center">-->
+<!--						<div class="client-img">-->
+<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							<h6>John Partho</h6>-->
+<!--							<span>Newyork USA</span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="testimonial-block">-->
+<!--					<p>-->
+<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
+<!--					</p>-->
+
+<!--					<div class="client-info is-flex is-align-items-center">-->
+<!--						<div class="client-img">-->
+<!--							<img src="images/team/testimonial2.jpg" alt="" class="w-100">-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							<h6>John Partho</h6>-->
+<!--							<span>Newyork USA</span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="testimonial-block">-->
+<!--					<p>-->
+<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
+<!--					</p>-->
+
+<!--					<div class="client-info is-flex is-align-items-center">-->
+<!--						<div class="client-img">-->
+<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
+<!--						</div>-->
+<!--						<div class="info">-->
+<!--							<h6>John Partho</h6>-->
+<!--							<span>Newyork USA</span>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</section>-->
+	{% include 'includes/footer.html' %}
+
+	{% include 'includes/scripts.html' %}
+
+</body>
+</html>
+   
