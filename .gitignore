@@ -22,7 +22,6 @@ db.sqlite3
 # Media and static files (optional, if using external storage or generated at runtime)
 media/
 staticfiles/
-static/
 
 # IDE files
 .vscode/
