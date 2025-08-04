@@ -1,3 +1,4 @@
+from datetime import date
 from django.views import View
 from django.contrib import messages
 from core.models import SupportPreference, ContactMessage, Event
@@ -73,3 +74,15 @@ class SupportRedirectView(LoginRequiredMixin, View):
             messages.error(request, "Invalid option selected")
 
         return redirect('accounts:profile')
+
+
+class TermsConditionView(View):
+    template_name = 'terms_and_condition.html'
+    page_name = 'Terms & Conditions'
+
+    def get(self, request):
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+            "today_date": date.today().strftime('%B %d, %Y'),
+        })
+

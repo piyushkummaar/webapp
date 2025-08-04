@@ -1,0 +1,198 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-12">
+      <div class="card shadow border-0">
+        <div class="card-body" id="terms-content">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="fw-bold m-0 text-center w-100">{{ page_name }}</h2>
+            <div class="position-absolute top-0 end-0 m-3">
+              <button class="btn btn-outline-secondary btn-sm me-2" onclick="printContent()">Print</button>
+              <button class="btn btn-solid-border" onclick="downloadPDF()">Download PDF</button>
+            </div>
+          </div>
+          <div id="print-header" style="display:none;">
+            <h2 style="text-align:center; font-weight:bold;">Terms & Conditions</h2>
+          </div>
+          <div id="terms-section">
+            <p class="fw-bold text-danger">
+              This website is not an emergency service and is not to be used in the case of a medical emergency.
+              If you are experiencing a critical or life-threatening condition, call 999 immediately.
+            </p>
+
+            <p>These Terms apply to the sale of goods and services via <strong>Meilichios ⋅ Epithetpharmacy.com</strong>, and are in addition to our general website Terms of Use.
+              These terms may be updated at any time. The applicable version will be that in place at the time of placing your order.</p>
+
+            <h4>Legally Binding Agreement</h4>
+            <p>By using this site and placing an order, you agree to be legally bound by these Terms and Conditions. We recommend printing a copy for your records.</p>
+
+            <hr>
+            <h4>About Us</h4>
+            <p><strong>Meilichios ⋅ Epithetpharmacy.com</strong> is operated under licence by <strong>Pharmacy2U Limited</strong> (Company No. 03802593), registered in England and Wales.</p>
+            <p><strong>Registered office:</strong><br>The Mille, 1000 Great West Road, Brentford, TW8 9DW.</p>
+            <p>Pharmacy2U is registered with the General Pharmaceutical Council and supervised by Superintendent Pharmacist Angelo MRPharmS (GPhC No. 2067101).</p>
+            <p><strong>Expert Health Limited</strong> (Company No. 14437938 | VAT No. GB 436 4784 67) provides clinical consultation and private prescribing services via the Online Doctor platform.</p>
+
+            <hr>
+            <h4>Responsibility Breakdown</h4>
+            <table class="table table-bordered table-sm">
+              <thead>
+                <tr>
+                  <th>Service Area</th>
+                  <th>Responsible Entity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Non-prescription medicines</td><td>Meilichios ⋅ Epithet Pharmacy</td></tr>
+                <tr><td>NHS prescriptions</td><td>Meilichios ⋅ Epithet Pharmacy</td></tr>
+                <tr><td>Private prescriptions (Online Doctor)</td><td>Meilichios ⋅ Epithet Pharmacy</td></tr>
+                <tr><td>Clinical consultations</td><td>Meilichios ⋅ Epithet Pharmacy</td></tr>
+              </tbody>
+            </table>
+            <p>Each entity is solely responsible for the services it provides.</p>
+
+            <hr>
+            <h4>Contact Information</h4>
+            <p><strong>Mail:</strong> Meilichios ⋅ Epithet Pharmacy, The Mille, 1000 Great West Road, Brentford, TW8 9DW.</p>
+            <p><strong>Complaints:</strong> Submit via our contact form or mail to the Complaints Team at the above address.</p>
+            <p><strong>NHS Patients:</strong> Contact NHS England at 0000 311 22 33 or <a class="text-decoration-none fw-semibold" href="mailto:england.contactus@nhs.net">england.contactus@nhs.net</a>.</p>
+            <p><strong>Regulators:</strong> General Pharmaceutical Council (GPhC) – details available on the NHS website. (Registration pending.)</p>
+            <p><strong>Dispute Resolution:</strong> We engage with the Centre for Effective Dispute Resolution (CEDR).</p>
+
+            <hr>
+            <h4>Professional Standards</h4>
+            <p>All services are delivered by qualified pharmacists operating from a registered pharmacy. Pharmacists adhere to NHS and GPhC professional standards.</p>
+
+            <hr>
+            <h4>Registration and Eligibility</h4>
+            <p>You must register an account to place an order. We only accept orders from individuals aged 18 or over, and only within the UK, Channel Islands, or Isle of Man.</p>
+
+            <hr>
+            <h4>NHS Prescription Services</h4>
+            <ul>
+              <li>Offered on a "best endeavours" basis.</li>
+              <li>Prescriptions collected electronically after nomination.</li>
+              <li>Exemption status verified via NHS RTEC.</li>
+              <li>Service available only to NHS GP-registered patients in England.</li>
+              <li>Free delivery for NHS prescriptions.</li>
+            </ul>
+
+            <hr>
+            <h4>Ordering and Acceptance</h4>
+            <ul>
+              <li>Orders reviewed before acceptance.</li>
+              <li>Acceptance confirmed via email or dispatch invoice.</li>
+              <li>Orders may be rejected due to stock, pricing, age, or eligibility issues.</li>
+            </ul>
+
+            <hr>
+            <h4>Product Information Accuracy</h4>
+            <p>We strive to ensure all product details and images are accurate. Color variations may occur. We may correct errors without liability.</p>
+
+            <hr>
+            <h4>Pricing and Payment</h4>
+            <ul>
+              <li>Prices in GBP and include VAT where applicable.</li>
+              <li>NHS charges: £9.90 per item.</li>
+              <li>Accepted: Visa, Mastercard, PayPal.</li>
+              <li>Cards charged at dispatch; PayPal charged immediately.</li>
+              <li>Failed payments cancel the order.</li>
+              <li>Pricing errors may result in cancellation or re-confirmation.</li>
+            </ul>
+
+            <hr>
+            <h4>Promotional Codes</h4>
+            <ul>
+              <li>Cannot be combined with other offers.</li>
+              <li>Not valid on restricted items (e.g. codeine, infant formula).</li>
+              <li>Threshold discounts may affect free delivery eligibility.</li>
+              <li>One use per customer, unless stated otherwise.</li>
+            </ul>
+
+            <hr>
+            <h4>Delivery</h4>
+            <ul>
+              <li>Standard: £2.99 (3–4 working days).</li>
+              <li>Next Day: Available to most mainland UK addresses.</li>
+              <li>Free delivery for NHS prescriptions.</li>
+              <li>Adult signature required. No "safe place" deliveries.</li>
+              <li>3 failed courier attempts = no refund (if pharmacy items included).</li>
+              <li>Exclusions: PO Boxes, ParcelShops, BFPO, freight forwarders.</li>
+              <li>Bulk orders may not qualify for free delivery.</li>
+            </ul>
+
+            <hr>
+            <h4>Bulk Orders</h4>
+            <p>Orders over 10 units of one item may incur extra delivery charges. We'll contact you before dispatch to confirm costs. Promotions may not apply.</p>
+
+            <hr>
+            <h4>Refunds and Returns</h4>
+            <p>Refunds issued only via original payment method. See our Returns and Refunds Policy for full details.</p>
+
+            <hr>
+            <h4>Limitation of Liability</h4>
+            <ul>
+              <li>No liability for delays due to external factors.</li>
+              <li>No liability for losses due to misuse of product advice.</li>
+              <li>No liability for import issues outside mainland UK.</li>
+            </ul>
+
+            <p class="text-muted small mt-4">Last updated: {{ today_date }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+  function printContent() {
+    const printWindow = window.open('', '_blank');
+    const content = document.getElementById('terms-section').innerHTML;
+    const header = document.getElementById('print-header').innerHTML;
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Print Terms & Conditions</title>
+          <style>
+            body { font-family: Arial, sans-serif; padding: 20px; }
+            h2, h4 { margin-top: 1rem; }
+            .alert { border: 1px solid #f5c6cb; background-color: #f8d7da; padding: 10px; color: #721c24; margin-bottom: 20px; }
+          </style>
+        </head>
+        <body>
+          ${header}
+          ${content}
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  }
+
+  function downloadPDF() {
+    const section = document.getElementById('terms-section');
+    const cloned = section.cloneNode(true);
+
+    // Add header at the top
+    const header = document.createElement('h2');
+    header.textContent = 'Terms & Policy';
+    header.style.textAlign = 'center';
+    header.style.fontWeight = 'bold';
+    cloned.prepend(header);
+
+    const opt = {
+      margin: 0.5,
+      filename: 'terms_and_policy.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(cloned).save();
+  }
+</script>
+{% endblock %}
