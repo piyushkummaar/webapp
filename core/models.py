@@ -67,3 +67,20 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"{self.subject} by {self.name}"
+
+
+class Appointment(models.Model):
+    APPOINTMENT_WITH_CHOICES = [
+        ('doctor', 'Doctor'),
+        ('pharmacist', 'Pharmacist'),
+        ('assistant', 'Pharmacy Assistant'),
+    ]
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField()
+    appointment_with = models.CharField(max_length=20, choices=APPOINTMENT_WITH_CHOICES)
+    appointment_slot = models.TimeField()
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} - {self.appointment_with}"

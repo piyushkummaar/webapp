@@ -13,11 +13,10 @@
 		<div class="columns">
 			<div class="column is-8-widescreen is-10-desktop">
 				<div class="block">
-					<span class="is-uppercase text-sm letter-spacing ">The most powerful Solution</span>
+					<span class="is-uppercase text-sm letter-spacing ">The Health Solution</span>
 					<h1 class="my-4">Empower Your Healthcare Leadership</h1>
-					<p class="mb-6">Veritatis earum aliquid doloribus molestias, eveniet molestiae aperiam ratione. Facilis velit voluptatibus impedit eligendi delectus illo earum voluptatum, laudantium molestiae!</p>
-
-					<a href="{% url 'accounts:register' %}" class="btn btn-main">Join us<i class="fa fa-angle-right ml-2"></i></a>
+					<p class="mb-6">Join a growing community of forward-thinking healthcare professionals dedicated to innovation, collaboration, and excellence in patient care. Lead with confidence, supported by the resources and insights you need to thrive.</p>
+					<a href="{% url 'join_us' %}" class="btn btn-main">Join us<i class="fa fa-angle-right ml-2"></i></a>
 
 				</div>
 			</div>
@@ -36,7 +35,7 @@
 					<div class="content">
 						<h4 class="mt-3 mb-3">{{ event.name }}</h4>
 						<p class="mb-5" style="text-align: justify;">{{ event.description }}</p>
-						<a href="{% url 'accounts:register' %}"> Join Now </a>
+						<a href="{% url 'join_us' %}"> Join Now </a>
 					</div>
 				</div>
 			</div>
@@ -303,104 +302,104 @@
     </div>
 </section>
 <!-- section Contact End  -->
-<!--<section class="section testimonial">-->
-<!--	<div class="container">-->
-<!--		<div class="columns is-desktop">-->
-<!--			<div class="column is-8-desktop">-->
-<!--				<div class="heading">-->
-<!--					<h2 class="mb-5">What they say about us</h2>-->
-<!--					<p>They are truely amazing in the industry ,molestiae expedita aspernatur officia, similique minima laudantium. Corrupti ipsa perspiciatis commodi nesciunt rerum mollitia enim voluptate!</p>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
+<section class="section has-background-light py-6">
+  <div class="container">
+    <div class="columns is-centered is-multiline">
 
-<!--	<div class="container-fluid">-->
-<!--		<div class="columns is-multiline">-->
-<!--			<div class="column is-12 testimonial-wrap">-->
-<!--				<div class="testimonial-block">-->
-<!--					<p>-->
-<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
-<!--					</p>-->
+      <div class="column is-8-desktop is-12-tablet">
+        <div class="has-background-white p-6 shadow has-text-centered">
+          <h2 class="title is-3 has-text-dark mb-3">Ready to Take the Next Step?</h2>
+            <br>
+          <p class="subtitle is-5 has-text-grey-dark mb-5">
+            Book an appointment with our healthcare professionals in just a few clicks.
+          </p>
 
-<!--					<div class="client-info is-flex is-align-items-center">-->
-<!--						<div class="client-img">-->
-<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
-<!--						</div>-->
-<!--						<div class="info">-->
-<!--							<h6>John Partho</h6>-->
-<!--							<span>Newyork USA</span>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
+          <button class="button is-primary is-medium" id="open-modal">
+            <span class="icon">
+              <i class="fas fa-calendar-check"></i>
+            </span>
+            <span>Book Appointment</span>
+          </button>
+        </div>
+      </div>
 
-<!--				<div class="testimonial-block">-->
-<!--					<p>-->
-<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
-<!--					</p>-->
+    </div>
+  </div>
+</section>
 
-<!--					<div class="client-info is-flex is-align-items-center">-->
-<!--						<div class="client-img">-->
-<!--							<img src="images/team/testimonial2.jpg" alt="" class="w-100">-->
-<!--						</div>-->
-<!--						<div class="info">-->
-<!--							<h6>John Partho</h6>-->
-<!--							<span>Newyork USA</span>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="testimonial-block">-->
-<!--					<p>-->
-<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
-<!--					</p>-->
+<section class="section">
+  <div class="container">
+    <h2 class="title is-4 mb-5">Frequently Asked Questions</h2>
 
-<!--					<div class="client-info is-flex is-align-items-center">-->
-<!--						<div class="client-img">-->
-<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
-<!--						</div>-->
-<!--						<div class="info">-->
-<!--							<h6>John Partho</h6>-->
-<!--							<span>Newyork USA</span>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="testimonial-block">-->
-<!--					<p>-->
-<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
-<!--					</p>-->
+    <div class="content">
 
-<!--					<div class="client-info is-flex is-align-items-center">-->
-<!--						<div class="client-img">-->
-<!--							<img src="images/team/testimonial2.jpg" alt="" class="w-100">-->
-<!--						</div>-->
-<!--						<div class="info">-->
-<!--							<h6>John Partho</h6>-->
-<!--							<span>Newyork USA</span>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--				<div class="testimonial-block">-->
-<!--					<p>-->
-<!--						Maiores quasi placeat harum itaque, ducimus cumque quas expedita hic. Qui ullam iste provident mollitia expedita facilis fuga repellat.-->
-<!--					</p>-->
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>What’s a healthy weight for me?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          NHS recommends sustaining a healthy weight using BMI. You may need to lose weight if your waist size is over 31.5 inches (female) or 37 inches (male).
+        </div>
+      </article>
 
-<!--					<div class="client-info is-flex is-align-items-center">-->
-<!--						<div class="client-img">-->
-<!--							<img src="images/team/testimonial1.jpg" alt="" class="w-100">-->
-<!--						</div>-->
-<!--						<div class="info">-->
-<!--							<h6>John Partho</h6>-->
-<!--							<span>Newyork USA</span>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</section>-->
-	{% include 'includes/footer.html' %}
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>What lifestyle changes can support healthy weight loss?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          Managing your diet and engaging in regular physical activity like brisk walking, jogging, swimming, or cycling helps burn calories effectively.
+        </div>
+      </article>
 
-	{% include 'includes/scripts.html' %}
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>Am I eligible for weight loss support from Online Doctor?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          You are eligible for weight loss treatments if you are between 18 to 75 years old. A medical assessment is required.
+        </div>
+      </article>
+
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>What are the benefits of a healthy, sustainable weight?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          A healthy weight provides more energy and motivation, helping you maintain a consistent exercise routine in your daily life.
+        </div>
+      </article>
+
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>Where can I learn more about weight loss?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          You can get detailed information from selected online doctors who can recommend the most beneficial treatment options.
+        </div>
+      </article>
+
+      <article class="message">
+        <div class="message-header" onclick="toggleAccordion(this)">
+          <p>Can I return my Weight Loss treatment if I change my mind?</p>
+          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="message-body is-hidden">
+          No, Weight Loss treatments cannot be returned.
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+{% include 'includes/footer.html' %}
+
+{% include 'includes/scripts.html' %}
 
 </body>
 </html>

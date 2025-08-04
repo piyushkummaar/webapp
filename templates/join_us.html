@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+  <div class="container">
+    <h2 class="title is-3">Join Us</h2>
+    <p class="subtitle is-5">Choose your membership type and join our community.</p>
+
+    <!-- Membership Select -->
+    <div class="field">
+      <label class="label" for="membership">Select Membership Level</label>
+      <div class="control">
+        <div class="select">
+          <select id="membership">
+            <option value="">-- Choose an option --</option>
+            <option value="affiliate">Affiliate Membership - £2,400</option>
+            <option value="medical">Medical Practice Membership - £360</option>
+            <option value="individual">Practice Manager - Individual - £120</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Info Block -->
+    <div id="info-block" class="is-light hidden mt-4"></div>
+
+    <!-- Email input -->
+    <div class="field hidden" id="email-block">
+      <label class="label" for="email">Enter your email</label>
+      <div class="control">
+        <input class="input" type="email" id="email" placeholder="you@example.com">
+      </div>
+      <div class="control mt-3">
+        <button class="button is-primary" id="joinBtn">Join</button>
+      </div>
+    </div>
+
+     Success message
+    <p id="successMsg" class="notification is-success is-light hidden mt-4">
+      🎉 Successfully joined!
+    </p>
+  </div>
+</div>
+
+<script>
+  const membershipSelect = document.getElementById('membership');
+  const emailBlock = document.getElementById('email-block');
+  const joinBtn = document.getElementById('joinBtn');
+  const successMsg = document.getElementById('successMsg');
+  const infoBlock = document.getElementById('info-block');
+
+  const descriptions = {
+    affiliate: `
+      <strong>Affiliate Membership - £2,400</strong><br>
+      Ideal for vendors, service providers, consultants, and insurers.<br>
+      ✅ Access to all monthly meetings<br>
+      ✅ Company listing as an Affiliate Member<br>
+      ✅ Sponsorship/speaking opportunities<br>
+      ⚠️ Not for service pitching during discussions.
+    `,
+    medical: `
+      <strong>Medical Practice Membership - £360</strong><br>
+      Best for clinics and healthcare organizations (up to 4 members).<br>
+      ✅ Includes all individual benefits<br>
+      ✅ Guest passes & team-wide access<br>
+      ✅ Public recognition as a Supporting Organization
+    `,
+    individual: `
+      <strong>Practice Manager - Individual - £120</strong><br>
+      Ideal for individual practice leaders.<br>
+      ✅ Access to meetings, recordings, and events<br>
+      ✅ Exclusive community access and early registration<br>
+      ✅ Discounts on premium sessions
+    `
+  };
+
+  membershipSelect.addEventListener('change', function () {
+    successMsg.classList.add('hidden');
+    emailBlock.classList.add('hidden');
+
+    const selected = this.value;
+    if (descriptions[selected]) {
+      infoBlock.innerHTML = descriptions[selected];
+      infoBlock.classList.remove('hidden');
+      emailBlock.classList.remove('hidden');
+    } else {
+      infoBlock.classList.add('hidden');
+      emailBlock.classList.add('hidden');
+    }
+  });
+
+  joinBtn.addEventListener('click', function () {
+    const emailInput = document.getElementById('email');
+    if (emailInput.value.trim() !== '') {
+      successMsg.classList.remove('hidden');
+    } else {
+      alert('Please enter a valid email.');
+    }
+  });
+</script>
+{% endblock %}

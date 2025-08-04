@@ -1,7 +1,7 @@
 from datetime import date
 from django.views import View
 from django.contrib import messages
-from core.models import SupportPreference, ContactMessage, Event
+from core.models import SupportPreference, ContactMessage, Event, Appointment
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -86,3 +86,25 @@ class TermsConditionView(View):
             "today_date": date.today().strftime('%B %d, %Y'),
         })
 
+
+class BookAppointmentView(View):
+    def post(self, request):
+        Appointment.objects.create(
+            first_name=request.POST.get('first_name'),
+            last_name=request.POST.get('last_name'),
+            phone=request.POST.get('phone'),
+            email=request.POST.get('email'),
+            appointment_with=request.POST.get('appointment_with'),
+            appointment_slot=request.POST.get('appointment_slot'),
+        )
+        return redirect('home')
+
+
+class JoinUsView(View):
+    template_name = 'join_us.html'
+    page_name = 'Join Us'
+
+    def get(self, request):
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+        })

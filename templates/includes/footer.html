@@ -8,6 +8,7 @@
     z-index: 1050 !important;
 }
 </style>
+<!-- logout model-->
 <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -29,6 +30,107 @@
     </div>
   </div>
 </div>
+
+<!-- book appointment model -->
+<div class="modal" id="appointment-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+
+    <!-- Modal Header -->
+    <header class="modal-card-head has-background-primary">
+      <p class="modal-card-title has-text-white">🗓️ Book Your Appointment</p>
+      <button class="delete" aria-label="close" id="close-modal"></button>
+    </header>
+
+    <!-- Modal Body / Form -->
+    <form method="POST" action="{% url 'book_appointment' %}">
+      {% csrf_token %}
+      <section class="modal-card-body">
+
+        <!-- Row: Name -->
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">First Name</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="first_name" placeholder="e.g. John" required>
+                <span class="icon is-left"><i class="fas fa-user"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="field">
+              <label class="label">Last Name</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="last_name" placeholder="e.g. Doe" required>
+                <span class="icon is-left"><i class="fas fa-user-tag"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row: Phone & Email -->
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label">Phone</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="phone" placeholder="e.g. +91 98765 43210" required>
+                <span class="icon is-left"><i class="fas fa-phone"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="field">
+              <label class="label">Email</label>
+              <div class="control has-icons-left">
+                <input class="input" type="email" name="email" placeholder="e.g. example@mail.com" required>
+                <span class="icon is-left"><i class="fas fa-envelope"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appointment With -->
+        <div class="field">
+          <label class="label">Appointment With</label>
+          <div class="control has-icons-left">
+            <div class="select is-fullwidth">
+              <select name="appointment_with" required>
+                <option value="">-- Select --</option>
+                <option value="doctor">Doctor</option>
+                <option value="pharmacist">Pharmacist</option>
+                <option value="assistant">Pharmacy Assistant</option>
+              </select>
+            </div>
+            <span class="icon is-left"><i class="fas fa-user-md"></i></span>
+          </div>
+        </div>
+
+        <!-- Time Slot -->
+        <div class="field">
+          <label class="label">Appointment Slot</label>
+          <div class="control has-icons-left">
+            <input class="input" type="time" name="appointment_slot" required>
+            <span class="icon is-left"><i class="fas fa-clock"></i></span>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Modal Footer -->
+      <footer class="modal-card-foot">
+        <button type="submit" class="button is-success">✅ Submit</button>
+        <button type="button" class="button is-light" id="cancel-modal">Cancel</button>
+      </footer>
+    </form>
+  </div>
+</div>
+
+
+
 
 <!-- footer Start -->
 <footer class="footer section">
@@ -92,4 +194,16 @@
 </footer>
 
 
+<script>
+  document.getElementById("open-modal").addEventListener("click", function () {
+    document.getElementById("appointment-modal").classList.add("is-active");
+  });
 
+  document.getElementById("close-modal").addEventListener("click", function () {
+    document.getElementById("appointment-modal").classList.remove("is-active");
+  });
+
+  document.getElementById("cancel-modal").addEventListener("click", function () {
+    document.getElementById("appointment-modal").classList.remove("is-active");
+  });
+</script>
