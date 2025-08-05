@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="section" id="appointment-form">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-10-desktop is-12-tablet">
+
+        {% if success %}
+        <div class="notification is-success is-light has-text-centered">
+          <span class="icon-text">
+            <span class="icon">
+              <i class="fas fa-check-circle"></i>
+            </span>
+            <span><strong>Appointment Booked Successfully!</strong></span>
+          </span>
+          <br>
+          We will notify you shortly with the confirmation.
+        </div>
+        {% endif %}
+
+        <div class="card shadow">
+          <header class="card-header" style="background-color: var(--primary-color); color: white;">
+            <p class="card-header-title is-centered is-size-4 text-white">
+              🗓️ Book an Appointment
+            </p>
+          </header>
+          <div class="card-content">
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="columns is-multiline">
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">First Name</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" name="first_name" placeholder="John" required>
+                      <span class="icon is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">Last Name</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="text" name="last_name" placeholder="Doe" required>
+                      <span class="icon is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">Phone</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="tel" name="phone" placeholder="123-456-7890" required>
+                      <span class="icon is-left">
+                        <i class="fas fa-phone"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">Email</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="email" name="email" placeholder="you@example.com" required>
+                      <span class="icon is-left">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">Appointment With</label>
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select name="appointment_with" required>
+                          <option value="">Choose a specialist</option>
+                          <option value="doctor">Doctor</option>
+                          <option value="pharmacist">Pharmacist</option>
+                          <option value="assistant">Pharmacy Assistant</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="column is-half">
+                  <div class="field">
+                    <label class="label">Appointment Date & Time</label>
+                    <div class="control has-icons-left">
+                      <input class="input" type="datetime-local" name="appointment_datetime" required>
+                      <span class="icon is-left">
+                        <i class="fas fa-calendar-alt"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="field is-grouped is-justify-content-center mt-5">
+                <div class="control">
+                  <button class="btn btn-main is-medium">
+                    <span class="icon">
+                      <i class="fas fa-calendar-check"></i>
+                    </span>
+                    <span>Book Appointment</span>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

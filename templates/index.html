@@ -6,6 +6,7 @@
 <body>
 <!-- navigation -->
 	{% include 'includes/navbar.html' %}
+
 <!-- Slider Start -->
 <section class="banner is-flex is-align-items-center">
 	<div class="banner-img-part"></div>
@@ -112,11 +113,11 @@
 				<div class="icon-block has-text-centered">
 					<i class="ti-light-bulb"></i>
 					<h5>Practice Manager - Individual - £15.00/month</h5>
-					<p style="text-align: justify;">
+					<p style="text-align: left;">
 						<em>Subscription period: 1 month, automatically recurring payments</em>
 					</p>
-					<p style="text-align: justify;">
-						<strong>🩺 Individual Membership – $180/year</strong><br>
+					<p style="text-align: left;">
+						<strong>🩺 Individual Membership – £180/year</strong><br>
 						Join a trusted community of practice leaders committed to collaboration, growth, and healthcare excellence.
 					</p>
 					<p style="text-align: justify;">
@@ -188,7 +189,7 @@
             <input type="password" name="password" class="input" placeholder="Password" required>
           </p>
           <p class="control">
-            <button type="submit" class="btn btn-solid-border btn-lg text-white">Login</button>
+            <button type="submit" class="btn btn-outline-light">Login</button>
           </p>
         </form>
       </div>
@@ -200,9 +201,12 @@
           <p class="mb-4 has-text-white">
             Trusted by thousands for personalized healthcare, expert consultation, and curated wellness plans across the globe.
           </p>
-          <a href="#health-assessment" class="button is-primary is-medium">
-            Health Assessment Evaluation
-          </a>
+		<a class="btn btn-outline-light is-medium" href="{% url 'book_appointment' %}">
+          <span class="icon">
+            <i class="fas fa-calendar-check"></i>
+          </span>
+          <span>Health Assessment Evaluation</span>
+        </a>
         </div>
       </div>
 
@@ -238,16 +242,15 @@
 							<div class="notification is-success contact__msg mb-4" style="display:none" role="alert">
 								Your message was sent successfully.
 							</div>
-
 							<select class="input" name="support_option" id="exampleFormControlSelect1" required>
 								<option value="">I Need help in ...</option>
-								<option value="design">Software Design</option>
-								<option value="cycle">Development cycle</option>
-								<option value="development">Software Development</option>
-								<option value="maintenance">Maintenance</option>
-								<option value="query">Process Query</option>
-								<option value="cost">Cost and Duration</option>
-								<option value="delivery">Modal Delivery</option>
+								<option value="Pharmacist Query">Pharmacist Query</option>
+								<option value="Doctors Query">Doctors Query</option>
+								<option value="Repeat Medication">Repeat Medication</option>
+								<option value="Monthly Supplement Query">Monthly Supplement Query</option>
+								<option value="Process Query">Process Query</option>
+								<option value="Cost and Duration">Cost and Duration</option>
+								<option value="Delivery">Delivery</option>
 							</select>
 						</div>
 						<div class="column is-12">
@@ -273,7 +276,7 @@
                      <ul class="list-unstyled">
                          <li>
                             <h5>Call Us</h5>
-                            +1 9987 506 744
+                            +44-758-459-056
                         </li>
                         <li>
                             <h5>Email Us</h5>
@@ -281,19 +284,20 @@
                         </li>
                         <li>
                             <h5>Location Map</h5>
-                            North Main Street,London
+                             The Mille, 1000 Great Western Road Brenford TW89DW,
+						     London
                         </li>
                     </ul>
 
                     <ul class="social-icons list-inline mt-5">
                         <li class="list-inline-item">
-                            <a href="http://www.themefisher.com"><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="http://www.themefisher.com"><i class="fab fa-twitter"></i></a>
+                            <a href=""><i class="fab fa-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="http://www.themefisher.com"><i class="fab fa-linkedin-in"></i></a>
+                            <a href=""><i class="fab fa-linkedin-in"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -314,12 +318,12 @@
             Book an appointment with our healthcare professionals in just a few clicks.
           </p>
 
-        <button class="btn btn-main is-medium"  id="open-modal">
+        <a class="btn btn-main is-medium" href="{% url 'book_appointment' %}">
           <span class="icon">
             <i class="fas fa-calendar-check"></i>
           </span>
           <span>Book Appointment</span>
-        </button>
+        </a>
         </div>
       </div>
 
@@ -347,11 +351,13 @@
   </div>
   </div>
 </section>
-
 {% include 'includes/footer.html' %}
-
 {% include 'includes/scripts.html' %}
-
+{% if success %}
+<script>
+	window.location.hash = 'contact';
+</script>
+{% endif %}
 </body>
 </html>
    

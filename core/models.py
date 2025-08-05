@@ -45,17 +45,7 @@ class Event(models.Model):
 
 
 class ContactMessage(models.Model):
-    SUPPORT_CHOICES = [
-        ('design', 'Software Design'),
-        ('cycle', 'Development cycle'),
-        ('development', 'Software Development'),
-        ('maintenance', 'Maintenance'),
-        ('query', 'Process Query'),
-        ('cost', 'Cost and Duration'),
-        ('delivery', 'Modal Delivery'),
-    ]
-
-    support_option = models.CharField(max_length=50, choices=SUPPORT_CHOICES)
+    support_option = models.CharField(max_length=100)
     subject = models.CharField(max_length=255)
     name = models.CharField(max_length=100)
     email = models.EmailField()

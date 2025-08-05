@@ -20,5 +20,7 @@ urlpatterns = [
     path('join-us/', JoinUsView.as_view(), name='join_us'),
     path('faq/', FaqView.as_view(), name="faq"),
     path('support-service/<slug:slug>', PagesView.as_view(), name="pages"),
+    path('book-appointment/', BookAppointmentView.as_view(), name="book_appointment"),
+
 
 ]
