@@ -188,7 +188,7 @@
             <input type="password" name="password" class="input" placeholder="Password" required>
           </p>
           <p class="control">
-            <button type="submit" class="button is-primary">Login</button>
+            <button type="submit" class="btn btn-solid-border btn-lg text-white">Login</button>
           </p>
         </form>
       </div>
@@ -302,7 +302,7 @@
     </div>
 </section>
 <!-- section Contact End  -->
-<section class="section has-background-light py-6">
+<section class="section py-6 counter">
   <div class="container">
     <div class="columns is-centered is-multiline">
 
@@ -314,12 +314,12 @@
             Book an appointment with our healthcare professionals in just a few clicks.
           </p>
 
-          <button class="button is-primary is-medium" id="open-modal">
-            <span class="icon">
-              <i class="fas fa-calendar-check"></i>
-            </span>
-            <span>Book Appointment</span>
-          </button>
+        <button class="btn btn-main is-medium"  id="open-modal">
+          <span class="icon">
+            <i class="fas fa-calendar-check"></i>
+          </span>
+          <span>Book Appointment</span>
+        </button>
         </div>
       </div>
 
@@ -330,70 +330,21 @@
 <section class="section">
   <div class="container">
     <h2 class="title is-4 mb-5">Frequently Asked Questions</h2>
-
-    <div class="content">
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>What’s a healthy weight for me?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          NHS recommends sustaining a healthy weight using BMI. You may need to lose weight if your waist size is over 31.5 inches (female) or 37 inches (male).
-        </div>
-      </article>
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>What lifestyle changes can support healthy weight loss?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          Managing your diet and engaging in regular physical activity like brisk walking, jogging, swimming, or cycling helps burn calories effectively.
-        </div>
-      </article>
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>Am I eligible for weight loss support from Online Doctor?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          You are eligible for weight loss treatments if you are between 18 to 75 years old. A medical assessment is required.
-        </div>
-      </article>
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>What are the benefits of a healthy, sustainable weight?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          A healthy weight provides more energy and motivation, helping you maintain a consistent exercise routine in your daily life.
-        </div>
-      </article>
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>Where can I learn more about weight loss?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          You can get detailed information from selected online doctors who can recommend the most beneficial treatment options.
-        </div>
-      </article>
-
-      <article class="message">
-        <div class="message-header" onclick="toggleAccordion(this)">
-          <p>Can I return my Weight Loss treatment if I change my mind?</p>
-          <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
-        </div>
-        <div class="message-body is-hidden">
-          No, Weight Loss treatments cannot be returned.
-        </div>
-      </article>
-
-    </div>
+      <div class="content">
+      {% for faq in faqs %}
+        <article class="message">
+          <div class="message-header" onclick="toggleAccordion(this)"
+          style="color: white; cursor: pointer;"
+          >
+            <p>{{ faq.question }}</p>
+            <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+          </div>
+          <div class="message-body is-hidden" id="faq-body-{{ forloop.counter }}">
+            {{ faq.answer }}
+          </div>
+        </article>
+      {% endfor %}
+  </div>
   </div>
 </section>
 

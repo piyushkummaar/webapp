@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from tinymce.models import HTMLField
 from django.utils.text import slugify
 
 
@@ -80,7 +81,25 @@ class Appointment(models.Model):
     phone = models.CharField(max_length=15)
     email = models.EmailField()
     appointment_with = models.CharField(max_length=20, choices=APPOINTMENT_WITH_CHOICES)
-    appointment_slot = models.TimeField()
+    appointment_datetime = models.DateTimeField()
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.appointment_with}"
+
+
+class Pages(models.Model):
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    description = HTMLField()
+
+    def __str__(self):
+        return self.title
+
+
+class FAQ(models.Model):
+    page = models.ForeignKey(Pages, on_delete=models.CASCADE, related_name='faqs')
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question

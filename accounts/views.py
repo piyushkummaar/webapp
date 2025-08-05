@@ -6,13 +6,16 @@ from django.views import View
 from django.views.generic import TemplateView
 from django.urls import reverse
 from accounts.models import CustomUser, PasswordResetToken
+from utils.call_models import get_support_service_obj
 
 
 class RegisterView(View):
     """Handles user registration."""
 
     def get(self, request):
-        return render(request, 'accounts/register.html', {'page_name': 'Register'})
+        return render(request, 'accounts/register.html', {
+            "page_name": "Register",
+            "pages": get_support_service_obj()})
 
     def post(self, request):
         email = request.POST.get('email')
@@ -35,14 +38,19 @@ class RegisterView(View):
             messages.success(request, "Registration successful. Welcome!")
             return redirect('dashboard')
 
-        return render(request, 'accounts/register.html', {'page_name': 'Register'})
+        return render(request, 'accounts/register.html', {
+            "page_name": "Register",
+            "pages": get_support_service_obj()
+        })
 
 
 class LoginView(View):
     """Handles user login."""
 
     def get(self, request):
-        return render(request, 'accounts/login.html', {'page_name': 'Login'})
+        return render(request, 'accounts/login.html', {
+             "page_name": "Login",
+             "pages": get_support_service_obj()})
 
     def post(self, request):
         email = request.POST.get('email')
@@ -56,7 +64,9 @@ class LoginView(View):
         else:
             messages.error(request, "Invalid email or password.")
 
-        return render(request, 'accounts/login.html', {'page_name': 'Login'})
+        return render(request, 'accounts/login.html', {
+            "page_name": "Login",
+            "pages": get_support_service_obj()})
 
 
 class LogoutView(View):
@@ -76,14 +86,20 @@ class ProfileView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         context['user'] = self.request.user
         context['page_name'] = 'Profile'
+        context['pages'] = get_support_service_obj()
         return context
 
 
 class ChangePasswordView(LoginRequiredMixin, View):
     """Allows the user to change their password."""
+    template_name = 'accounts/change_password.html'
+    page_name = 'Change Password'
 
     def get(self, request):
-        return render(request, 'accounts/change_password.html', {'page_name': 'Change Password'})
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+            "pages": get_support_service_obj()
+        })
 
     def post(self, request):
         current = request.POST.get('current_password')
@@ -103,7 +119,10 @@ class ChangePasswordView(LoginRequiredMixin, View):
             messages.success(request, "Password changed successfully.")
             return redirect('accounts:profile')
 
-        return render(request, 'accounts/change_password.html', {'page_name': 'Change Password'})
+        return render(request, self.template_name, {
+            "page_name": "Change Password",
+            "pages": get_support_service_obj()
+        })
 
 
 class PasswordResetView(View):
@@ -111,7 +130,9 @@ class PasswordResetView(View):
     page_name = 'Forget Password'
 
     def get(self, request):
-        return render(request, self.template_name, {'page_name': self.page_name})
+        return render(request, self.template_name, {"page_name": self.page_name,
+                                                    "pages": get_support_service_obj()
+                                                    })
 
     def post(self, request):
         email = request.POST.get('email')
@@ -129,10 +150,14 @@ class PasswordResetView(View):
         # TODO: Email sent
         messages.success(request, f"Password reset link: {reset_link}")
 
-        return render(request, self.template_name, {'page_name': self.page_name})
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+            "pages": get_support_service_obj()
+        })
 
 
 class PasswordResetConfirmView(View):
+    page_name = "Set New Password"
     template_name = 'accounts/password_reset_confirm.html'
 
     def get(self, request, token, random_str):
@@ -146,7 +171,11 @@ class PasswordResetConfirmView(View):
             messages.error(request, "Invalid or expired reset link.")
             return redirect('accounts:password_reset')
 
-        return render(request, self.template_name)
+        return render(request, self.template_name,
+        {
+            "page_name": self.page_name,
+            "pages": get_support_service_obj()
+        })
 
     def post(self, request, token, random_str):
         try:

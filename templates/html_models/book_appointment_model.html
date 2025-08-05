@@ -1,0 +1,93 @@
+<div class="modal" id="appointment-modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+
+    <!-- Modal Header -->
+    <header class="modal-card-head" style="background-color: var(--primary-color); color: white;">
+      <p class="modal-card-title text-white">🗓️ Book Your Appointment</p>
+      <button class="delete" aria-label="close" id="close-modal"></button>
+    </header>
+
+    <!-- Modal Body / Form -->
+    <form method="POST" action="{% url 'book_appointment' %}">
+      {% csrf_token %}
+      <section class="modal-card-body">
+
+        <!-- Row: Name -->
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" style="color: var(--primary-color);">First Name</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="first_name" placeholder="First Name" required>
+                <span class="icon is-left"><i class="fas fa-user"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="field">
+              <label class="label" style="color: var(--primary-color);">Last Name</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="last_name" placeholder="Last Name" required>
+                <span class="icon is-left"><i class="fas fa-user-tag"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row: Phone & Email -->
+        <div class="columns">
+          <div class="column">
+            <div class="field">
+              <label class="label" style="color: var(--primary-color);">Phone</label>
+              <div class="control has-icons-left">
+                <input class="input" type="text" name="phone" placeholder="e.g. +91 98765 43210" required>
+                <span class="icon is-left"><i class="fas fa-phone"></i></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="field">
+              <label class="label" style="color: var(--primary-color);">Email</label>
+              <div class="control has-icons-left">
+                <input class="input" type="email" name="email" placeholder="e.g. example@mail.com" required>
+                <span class="icon is-left"><i class="fas fa-envelope"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appointment With -->
+        <div class="field">
+          <label class="label" style="color: var(--primary-color);">Appointment With</label>
+          <div class="control has-icons-left">
+            <div class="select is-fullwidth">
+              <select name="appointment_with" required>
+                <option value="">-- Select --</option>
+                <option value="doctor">Doctor</option>
+                <option value="pharmacist">Pharmacist</option>
+                <option value="assistant">Pharmacy Assistant</option>
+              </select>
+            </div>
+            <span class="icon is-left"><i class="fas fa-user-md"></i></span>
+          </div>
+        </div>
+      <div class="field">
+        <label class="label" style="color: var(--primary-color);">Appointment Date & Time</label>
+        <div class="control has-icons-left">
+          <input class="input" type="datetime-local" name="appointment_datetime" required>
+          <span class="icon is-left"><i class="fas fa-calendar-alt"></i></span>
+        </div>
+      </div>
+      </section>
+
+      <!-- Modal Footer -->
+      <footer class="modal-card-foot">
+        <button type="submit" class="btn btn-main is-medium">Submit</button>
+        <button type="button" class="button is-light" id="cancel-modal">Cancel</button>
+      </footer>
+    </form>
+  </div>
+</div>

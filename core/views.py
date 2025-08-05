@@ -1,9 +1,12 @@
 from datetime import date
 from django.views import View
 from django.contrib import messages
-from core.models import SupportPreference, ContactMessage, Event, Appointment
+from core.models import SupportPreference, ContactMessage, Event, Appointment, Pages, FAQ
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.paginator import Paginator
+from django.db.models import Q
+from utils.call_models import get_support_service_obj
 
 
 class IndexView(View):
@@ -12,10 +15,13 @@ class IndexView(View):
 
     def get(self, request):
         events = Event.objects.all()
+        faq_list = FAQ.objects.all()[:6]
         return render(request, self.template_name, {
             "page_name": self.page_name,
-            "events": events
-            })
+            "events": events,
+            "pages": get_support_service_obj(),
+            "faqs": faq_list
+        })
 
     def post(self, request):
         ContactMessage.objects.create(
@@ -27,7 +33,8 @@ class IndexView(View):
         )
         return render(request, self.template_name, {
             "page_name": self.page_name,
-            "success": True
+            "success": True,
+            "pages": get_support_service_obj()
         })
 
 
@@ -38,10 +45,10 @@ class DashboardView(LoginRequiredMixin, View):
     pre_objs = SupportPreference.objects.all()
 
     def get(self, request):
-
         return render(request, self.template_name, {
             'page_name': self.page_name,
-            'pre_objs': self.pre_objs
+            'pre_objs': self.pre_objs,
+            "pages": get_support_service_obj()
 
         })
 
@@ -84,6 +91,7 @@ class TermsConditionView(View):
         return render(request, self.template_name, {
             "page_name": self.page_name,
             "today_date": date.today().strftime('%B %d, %Y'),
+            "pages": get_support_service_obj()
         })
 
 
@@ -95,7 +103,7 @@ class BookAppointmentView(View):
             phone=request.POST.get('phone'),
             email=request.POST.get('email'),
             appointment_with=request.POST.get('appointment_with'),
-            appointment_slot=request.POST.get('appointment_slot'),
+            appointment_datetime=request.POST.get('appointment_datetime'),
         )
         return redirect('home')
 
@@ -107,4 +115,44 @@ class JoinUsView(View):
     def get(self, request):
         return render(request, self.template_name, {
             "page_name": self.page_name,
+            "pages": get_support_service_obj()
+        })
+
+
+class PagesView(View):
+    template_name = 'pages.html'
+    page_name = 'Support Service'
+
+    def get(self, request, slug):
+        page = Pages.objects.get(slug=slug)
+        page_name = f'{self.page_name} | {page.title}'
+        return render(request, self.template_name, {
+            "page_name": page_name,
+            "page": page,
+            "pages": get_support_service_obj()
+        })
+
+
+class FaqView(View):
+    template_name = 'faq.html'
+    page_name = 'FAQ'
+
+    def get(self, request):
+        query = request.GET.get('q', '')
+        faq_list = FAQ.objects.all()
+
+        if query:
+            faq_list = faq_list.filter(
+                Q(question__icontains=query) | Q(answer__icontains=query)
+            )
+
+        paginator = Paginator(faq_list, 5)  # Show 5 FAQs per page
+        page_number = request.GET.get('page')
+        faqs = paginator.get_page(page_number)
+
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+            "faqs": faqs,
+            "pages": get_support_service_obj(),
+            "query": query
         })

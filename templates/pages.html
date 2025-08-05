@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+  <div class="container">
+    <h1 class="text-center" style="color: var(--primary-color)">{{ page.title }}</h1>
+    <p class="subtitle is-5">{{ page.description | safe }}</p>
+  </div>
+</div>
+{% if page.faqs.all %}
+<div class="container">
+  <h2 class="title is-4 mb-5" style="color: var(--primary-color)">Frequently Asked Questions</h2>
+  <div class="content">
+  {% for faq in page.faqs.all %}
+    <article class="message">
+      <div class="message-header" onclick="toggleAccordion(this)"
+      style="color: white; cursor: pointer;"
+      >
+        <p>{{ faq.question }}</p>
+        <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+      </div>
+      <div class="message-body is-hidden" id="faq-body-{{ forloop.counter }}">
+        {{ faq.answer }}
+      </div>
+    </article>
+  {% endfor %}
+
+  </div>
+</div>
+{% endif %}
+<br>
+  <div class="columns is-centered is-multiline">
+
+    <div class="column is-8-desktop is-12-tablet">
+      <div class="has-background-white p-6 shadow has-text-centered">
+        <h2 class="title is-3 has-text-dark mb-3">Ready to Take the Next Step?</h2>
+          <br>
+        <p class="subtitle is-5 has-text-grey-dark mb-5">
+          Book an appointment with our healthcare professionals in just a few clicks.
+        </p>
+
+        <button class="btn btn-main is-medium"  id="open-modal">
+          <span class="icon">
+            <i class="fas fa-calendar-check"></i>
+          </span>
+          <span>Book Appointment</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

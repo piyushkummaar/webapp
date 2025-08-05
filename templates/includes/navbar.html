@@ -24,7 +24,22 @@
 					 <li class="navbar-item">
 						 <a class="navbar-link" href="{% url 'home' %}#contact">Contact</a>
 					 </li>
+				   <!-- Support Page Dropdown -->
+				  <div class="navbar-item has-dropdown is-hoverable">
+					<a class="navbar-link">
+					  Support Services
+					</a>
+
+					<div class="navbar-dropdown">
+					{% for page in pages %}
+					  <a class="navbar-item" href="{% url 'pages' page.slug %}">
+						  {{ page.title }}
+					  </a>
+					{% endfor %}
+					</div>
+				  </div>
 				 </ul>
+
 				 <ul class="navbar-end ml-0">
 					 {% if user.is_authenticated %}
 					 <li class="navbar-item has-dropdown">

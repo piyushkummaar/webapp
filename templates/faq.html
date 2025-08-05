@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="section">
+  <div class="container">
+      <h1 class="text-center" style="color: var(--primary-color)">Frequently Asked Questions</h1>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Search Form -->
+  <form method="get" class="mb-5">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <input class="input" type="text" name="q" value="{{ query }}" placeholder="Search FAQs...">
+      </div>
+      <div class="control">
+        <button class="button is-primary" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Accordion -->
+  <div class="content">
+    {% for faq in faqs %}
+    <article class="message">
+      <div class="message-header" onclick="toggleAccordion(this)" style="cursor: pointer;">
+        <p>{{ faq.question }}</p>
+        <span class="icon is-small"><i class="fas fa-angle-down"></i></span>
+      </div>
+      <div class="message-body is-hidden">
+        {{ faq.answer|safe }}
+      </div>
+    </article>
+    {% empty %}
+    <p>No FAQs found.</p>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination -->
+  <nav class="pagination is-centered mt-6" role="navigation" aria-label="pagination">
+    {% if faqs.has_previous %}
+      <a class="pagination-previous" href="?page={{ faqs.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+    {% else %}
+      <a class="pagination-previous" disabled>Previous</a>
+    {% endif %}
+
+    {% if faqs.has_next %}
+      <a class="pagination-next" href="?page={{ faqs.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+    {% else %}
+      <a class="pagination-next" disabled>Next</a>
+    {% endif %}
+
+    <ul class="pagination-list">
+      {% for num in faqs.paginator.page_range %}
+        {% if faqs.number == num %}
+          <li><a class="pagination-link is-current">{{ num }}</a></li>
+        {% else %}
+          <li><a class="pagination-link" href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
+</div>
+
+<script>
+function toggleAccordion(header) {
+  const body = header.nextElementSibling;
+  body.classList.toggle('is-hidden');
+  const icon = header.querySelector('.icon i');
+  icon.classList.toggle('fa-angle-down');
+  icon.classList.toggle('fa-angle-up');
+}
+</script>
+{% endblock %}
