@@ -5,13 +5,14 @@
     <div class="col-md-12">
       <div class="card shadow border-0">
         <div class="card-body" id="terms-content">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="fw-bold m-0 text-center w-100">{{ page_name }}</h2>
-            <div class="position-absolute top-0 end-0 m-3">
-              <button class="btn btn-outline-secondary btn-sm me-2" onclick="printContent()">Print</button>
-              <button class="btn btn-solid-border" onclick="downloadPDF()">Download PDF</button>
-            </div>
-          </div>
+              <div class="mb-3 text-center">
+        <h2 class="fw-bold mb-3">{{ page_name }}</h2>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <button class="btn btn-outline-secondary btn-sm" onclick="printContent()">Print</button>
+          <button class="btn btn-solid-border btn-sm" onclick="downloadPDF()">Download PDF</button>
+        </div>
+      </div>
+
           <div id="print-header" style="display:none;">
             <h2 style="text-align:center; font-weight:bold;">Terms & Conditions</h2>
           </div>
