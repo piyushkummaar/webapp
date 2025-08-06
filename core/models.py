@@ -24,6 +24,7 @@ class SupportPreference(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, blank=True)
+    even_icon = models.ImageField(upload_to='event_icons/', null=True, blank=True)
     description = models.TextField()
 
     created_at = models.DateTimeField(auto_now_add=True)

@@ -7,7 +7,8 @@ from .views import (
     BookAppointmentView,
     JoinUsView,
     PagesView,
-    FaqView
+    FaqView,
+    CustomerIdentityVerificationView,
 )
 
 
@@ -21,6 +22,6 @@ urlpatterns = [
     path('faq/', FaqView.as_view(), name="faq"),
     path('support-service/<slug:slug>', PagesView.as_view(), name="pages"),
     path('book-appointment/', BookAppointmentView.as_view(), name="book_appointment"),
-
+    path('verify-identity/', CustomerIdentityVerificationView.as_view(), name='verify_identity'),
 
 ]

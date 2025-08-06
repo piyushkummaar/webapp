@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<section class="section">
+  <div class="columns">
+          <div class="column is-two-thirds">
+        <div class="box">
+          <h1 class="title">Customer Identity Verification</h1>
+          <p>Online pharmacies must carry out an identity check appropriate for the medicine being supplied.</p>
+          <p><strong>Accepted Photo ID:</strong></p>
+          <ul>
+            <li>1. Passport</li>
+            <li>2. Driving License</li>
+          </ul>
+          <p class="mt-4">
+            <strong>Note:</strong> During a risk assessment, the Pharmacist should gather evidence about the risks for each individual service, medicine and medical device before providing that service.
+          </p>
+          <p>
+            Our specific identity-checking service uses <strong>photo ID verification</strong>. There should be a robust process in place.
+          </p>
+
+          <!-- Optional FAQs -->
+          <div class="mt-5">
+            <h2 class="title is-5">Common Questions</h2>
+            <div class="box">
+              <strong>Can a person choose their medicine before a consultation online?</strong>
+              <p>
+                The digital platform can allow people to give their preferred choice of medicine. However, decisions about treatment are for both the prescriber and the person to consider together during the consultation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- RIGHT: Capture or Upload -->
+    <div class="column is-one-third">
+      <div class="box">
+        <h3 class="title is-5">Verify Your Identity</h3>
+        <div id="camera-container" class="has-text-centered">
+          <video id="video" autoplay playsinline width="100%"></video>
+          <canvas id="canvas" class="is-hidden" width="320" height="240"></canvas>
+          <img id="captured-image" class="is-hidden" width="100%" />
+        </div>
+
+        <div class="buttons mt-3 is-centered">
+          <button id="capture-btn" class="button is-link">Capture</button>
+          <button id="retake-btn" class="button is-warning is-hidden">Retake</button>
+        </div>
+
+        <div class="field mt-3">
+          <label class="label">Or upload photo ID</label>
+          <div class="control">
+            <input id="upload" type="file" accept="image/*" class="input">
+          </div>
+        </div>
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="field mt-4">
+          <button id="submit-btn" class="button is-success" disabled>Submit Verification</button>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'js/capture.js' %}"></script>
+{% endblock %}

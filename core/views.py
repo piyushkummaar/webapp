@@ -172,3 +172,23 @@ class FaqView(View):
             "pages": get_support_service_obj(),
             "query": query
         })
+
+
+class CustomerIdentityVerificationView(View):
+    template_name = "customer_verification.html"
+    page_name = "Customer Verification"
+
+    def get(self, request):
+        return render(request, self.template_name, {
+            "page_name": self.page_name,
+            "pages": get_support_service_obj(),
+        })
+
+    def post(self, request):
+        template_name = "verification_success.html"
+        return render(request, template_name, {
+            "page_name": self.page_name,
+            "pages": get_support_service_obj(),
+            "success": True
+        })
+

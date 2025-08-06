@@ -135,3 +135,22 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTHENTICATION_BACKENDS = [
     'accounts.backends.EmailBackend',
 ]
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'width': '100%',
+    'menubar': True,
+    'plugins': '''
+        advlist autolink lists link image charmap preview anchor
+        searchreplace visualblocks code fullscreen
+        insertdatetime media table paste code help wordcount
+    ''',
+    'toolbar': '''
+        undo redo | formatselect | bold italic backcolor |
+        alignleft aligncenter alignright alignjustify |
+        bullist numlist outdent indent | removeformat |
+        link image media table | code preview fullscreen
+    ''',
+    'content_style': 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+}
+

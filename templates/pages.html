@@ -4,7 +4,8 @@
 <div class="section">
   <div class="container">
     <h1 class="text-center" style="color: var(--primary-color)">{{ page.title }}</h1>
-    <p class="subtitle is-5">{{ page.description | safe }}</p>
+    <p class="subtitle is-5"></p>
+    {{ page.description | safe }}
   </div>
 </div>
 {% if page.faqs.all %}
